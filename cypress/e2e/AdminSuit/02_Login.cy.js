@@ -1,9 +1,12 @@
 /// <reference types="Cypress" />
 
-describe("Admin Suite", () => {
-    it("TC_MS002 - Trying to Login with wrong information", ()=> {
+describe("Login", () => {
+    beforeEach(() => {
         cy.visit("/");
         cy.get('.uk-flex > .uk-button').click();
+    })
+
+    it("TC_L001 - Trying to Login with wrong information", ()=> {
         cy.fixture("credentials/failLogin").then((user) =>{
             cy.get('#signIn-email').type(user.email)
             cy.get('#signIn-password').type(user.password)
@@ -15,14 +18,13 @@ describe("Admin Suite", () => {
 
     }); 
     // TODO: clear INPUT first
-    it("TC_MS003 - Login Successfully", ()=> {
-        cy.visit("/");
-        cy.get('.uk-flex > .uk-button').click();
+    it("TC_L002 - Login Successfully", ()=> {
         cy.fixture("credentials/admin").then((user) =>{
             cy.get('#signIn-email').type(user.email)
             cy.get('#signIn-password').type(user.password)
         })  
         cy.get('#signIn-primary-button').click()
+
     });         
 }); 
         

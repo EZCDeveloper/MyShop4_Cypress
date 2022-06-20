@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
-describe("Admin Suite", () => {
-    it("TC_MS003 - Add a New Category", () => {    
+describe("Categories", () => {
+    it("TC_C001 - Add a New Category", () => {    
         cy.visit("/");
         cy.get('.uk-flex > .uk-button').click();
         cy.fixture("credentials/admin").then((user) =>{
@@ -9,9 +9,11 @@ describe("Admin Suite", () => {
              cy.get('#signIn-password').type(user.password)
         })  
         cy.get('#signIn-primary-button').click()
-        cy.get('.sidebar > .sidebar-links-wrapper > #lista-1 > :nth-child(5) > .sidebar-links-item > #sidebar-categories').click()
+        cy.fixture("linksButtons/buttons").then((buttons)=>{
+            cy.get(buttons.goCategories).click({force: true})
+        })
         cy.get('#button-add-category').click()
-        cy.get('#category-name').type('Laptops7')
+        cy.get('#category-name').type('SmartPhones')
         cy.get('.select').click()
    
     // Attaching File
