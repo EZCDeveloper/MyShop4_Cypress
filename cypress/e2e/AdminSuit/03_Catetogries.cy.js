@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 describe("Categories", () => {
-    it("TC_C001 - Add a New Category", () => {    
+    it.only("TC_C001 - Add a New Category", () => {    
         cy.visit("/");
         cy.get('.uk-flex > .uk-button').click();
         cy.fixture("credentials/admin").then((user) =>{
@@ -13,8 +13,10 @@ describe("Categories", () => {
             cy.get(buttons.goCategories).click({force: true})
         })
         cy.get('#button-add-category').click()
-        cy.get('#category-name').type('SmartPhones')
-        cy.get('.select').click()
+        cy.fixture("products/categories").then((cat)=>{
+            cy.get('#category-name').type(cat.firstCategory)
+            //cy.get('.select').click()
+        })
    
     // Attaching File
         cy.get('#category-image').attachFile('images/laptops.png') 
@@ -24,7 +26,9 @@ describe("Categories", () => {
     // Edit Category --> With CCS Ranorex Selector
         cy.get('.card-extra-actions').find('.button-dropdown').last().click()
         cy.get("ul:nth-of-type(6) > li:nth-of-type(2)").click({force: true})
-        cy.get('#category-name').clear().type('Laptos7 Re-New')
-        cy.get("button#category-add").click()
+        cy.fixture("products/categories").then((cat)=>{
+            cy.get('#category-name').clear().type(cat.editedCategory)
+        })
+        cy.get("button#category-add").click({force: true})
     })
 })
