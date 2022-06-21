@@ -25,7 +25,7 @@ describe("Categories", () => {
 
     // Edit Category --> With CCS Ranorex Selector
         cy.get('.card-extra-actions').find('.button-dropdown').last().click()
-        cy.get("ul:nth-of-type(6) > li:nth-of-type(2)").click({force: true})
+        cy.get("ul:nth-of-type(5) > li:nth-of-type(2)").click({force: true})
         cy.fixture("products/categories").then((cat)=>{
             cy.get('#category-name').clear().type(cat.editedCategory)
         })

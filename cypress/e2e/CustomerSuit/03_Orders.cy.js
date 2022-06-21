@@ -18,7 +18,7 @@ describe("Orders", () => {
         cy.get('.card-body').click()
         cy.get('#addToCart-button-default').click()
 
-        // Add a Single to the cart
+        // Add a Single Product to the cart
         cy.fixture("products/singleProduct").then((prod)=>{
             cy.get('.search-input').type(prod.productName)   
         })
