@@ -62,6 +62,24 @@ describe("Products", () => {
         })
         cy.get('.select').attachFile('images/smartPhone.jpeg')
         cy.get('#addProduct-primary-button').click({force: true})
+
+        // Add a Product with Discount
+        cy.get('#add-button').click()
+        cy.fixture("products/discountProduct").then((prod)=>{
+           cy.get('#addProduct-name').type(prod.productName)
+           cy.get('#addProduct-description').type(prod.productDescription)     
+       })
+        cy.fixture("products/categories").then((cat)=>{
+        cy.get('select').select(cat.editedCategory)
+        })
+        cy.get('#addProduct-has-discount').click({force: true})
+        cy.fixture("products/discountProduct").then((prod)=>{
+            cy.get('#addProduct-discounted-price').type(prod.productWithDiscount)
+            cy.get('#addProduct-price').type(prod.productPrice)
+            cy.get('#addProduct-stock').type(prod.productStock)
+        })
+        cy.get('#addProduct-images').attachFile('images/smartPhone.jpeg')
+        cy.get('#addProduct-primary-button').click({force: true})
     });
     
     it("TC_P002 - Edit a Product", ()=> {
@@ -104,7 +122,7 @@ describe("Products", () => {
         
     });
 
-    it("TC_P004 - Delete a Product (Multiple price)", () => {
+    it("TC_P004 - Delete a Product (Discount price)", () => {
         cy.fixture("credentials/admin").then((user) =>{
             cy.get('#signIn-email').type(user.email)
             cy.get('#signIn-password').type(user.password)
@@ -113,7 +131,7 @@ describe("Products", () => {
         cy.fixture("linksButtons/buttons").then((buttons)=>{
             cy.get(buttons.goProducts).click({force: true})
         })
-        cy.fixture("products/multipleProduct").then((prod)=>{
+        cy.fixture("products/discountProduct").then((prod)=>{
             cy.get('#search-mobile').type(prod.productName)    
         })
         cy.contains('Remove').click({force: true})

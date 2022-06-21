@@ -4,20 +4,24 @@ describe("Orders", () => {
     it.only("TC_O001 - Add to Cart", () => {
         cy.visit("https://myshop4.com/qa.team")
 
-        // TODO: Activate button on Dashboard "Recibing Orders (My location is temporary closed"
         // Add to cart "Test Plan Template"
         cy.get('.search-input').type('Test Plan Template')
         cy.get('.card-body').click()
         cy.get('#addToCart-button-default').click()
         cy.get('#button-source-delivery-default').click()
         
-        // Add 1st product to cart  
-        cy.get('.search-input').type('Lenovo Fighter Plus')
+        
+        // Add a Product with Multiple price to the cart
+        cy.fixture("products/multipleProduct").then((prod)=>{
+            cy.get('.search-input').type(prod.productName)      
+        })
         cy.get('.card-body').click()
         cy.get('#addToCart-button-default').click()
-        
-        // Add 2nd product to cart
-        cy.get('.search-input').type('Lenovo Thinkpad')
+
+        // Add a Single to the cart
+        cy.fixture("products/singleProduct").then((prod)=>{
+            cy.get('.search-input').type(prod.productName)   
+        })
         cy.get('.card-body').click()
         cy.get('#addToCart-button-default').click()
 
@@ -26,7 +30,7 @@ describe("Orders", () => {
         
         // Check products added
         cy.contains('Test plan template').should('be.visible')
-        cy.contains('Lenovo Fighter Plus').should('be.visible')
+        cy.contains('Lenovo Fighter Power').should('be.visible')
         cy.contains('Lenovo Thinkpad').should('be.visible')
        
         // Continue to ckeckout
@@ -54,7 +58,7 @@ describe("Orders", () => {
         cy.contains('mycompra@gmail.com').should('be.visible')
         cy.contains('3794123123').should('be.visible')
         cy.contains('Test plan template').should('be.visible')
-        cy.contains('Lenovo Fighter Plus').should('be.visible')
+        cy.contains('Lenovo Fighter Power').should('be.visible')
         cy.contains('Lenovo Thinkpad').should('be.visible')
 
         // Send Copy
@@ -64,10 +68,6 @@ describe("Orders", () => {
 
         // Back to home
         cy.get('#go-to-main-page').click()
-
-        
-
-    }); 
-    
+    });  
 
 })
