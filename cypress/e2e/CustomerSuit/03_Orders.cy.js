@@ -63,7 +63,7 @@ describe("Orders", () => {
 
         // Send Copy
         cy.get('#sendCopyToEmail-button-default').click()
-        cy.get('#Email').type('emanuel.zini@gmail.com')
+        cy.get('#Email').type('rocio.gartxo@arzion.com')
         cy.get('#modal-close-button').click()
 
         // Back to home

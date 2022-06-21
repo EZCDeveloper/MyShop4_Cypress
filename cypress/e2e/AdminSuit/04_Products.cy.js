@@ -159,7 +159,6 @@ describe("Products", () => {
         });  
     })
 
-    // TODO: Pending SHARE: save data into a file.
     it("TC_P006 - Share products", () => {
         cy.fixture("credentials/admin").then((user) =>{
             cy.get('#signIn-email').type(user.email)
