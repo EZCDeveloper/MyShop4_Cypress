@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 describe("Orders", () => {
-    it.only("TC_O001 - Add to Cart", () => {
+    it("TC_O001 - Add to Cart", () => {
         cy.visit("https://myshop4.com/qa.team")
 
         // Add to cart "Test Plan Template"

@@ -23,7 +23,7 @@ describe("Visit Catalog", () => {
         cy.get('#modal-cancel-button').click()
     });
 
-    it.only("TC_V003 - Searchings", () => {
+    it("TC_V003 - Searchings", () => {
         cy.visit("https://myshop4.com/qa.team")
         cy.get('.search-input').type('test')
         cy.get(".mobile-menu-body ").then($main => {
