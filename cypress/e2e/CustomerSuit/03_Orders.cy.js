@@ -70,12 +70,12 @@ describe("Orders", () => {
         cy.contains(mulProd.productName).should('be.visible')
         cy.contains(singProd.productName).should('be.visible')
 
-        // Send Copy
+        // Send a Copy
         cy.get('#sendCopyToEmail-button-default').click()
-        cy.get('#Email').type('emanuel.zini@gmail.com')
+        cy.get('#Email').type('rocio.gartxo@arzion.com')
         cy.get('#modal-close-button').click()
 
-        // Succes Aler
+        // Success Alert
         cy.get('#Success-alert-content').contains('The email was sended successfully').should('be.visible')
 
         // Back to home
