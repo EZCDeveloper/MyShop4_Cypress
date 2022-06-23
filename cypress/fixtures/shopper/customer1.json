@@ -1,0 +1,13 @@
+{
+    "firstName": "Juan Manuel",
+    "lastName": "Fernández",
+    "email": "mycompra@gmail.com",
+    "phone": "3794123123",
+    "address": "La Madrid 825 2do A",
+    "city":"Posadas",
+    "state": "Misiones",
+    "country": "Argentina",
+    "miniumAmount": "100000",
+    "invalidValue": "Invalid minimum value",
+    "aboveAmount": "600000"
+}

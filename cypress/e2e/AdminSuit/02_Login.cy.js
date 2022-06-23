@@ -6,7 +6,7 @@ describe("Login", () => {
         cy.get('.uk-flex > .uk-button').click();
     })
 
-    it("TC_L001 - Trying to Login with wrong information", ()=> {
+    it("TC_L001 - Login should fail", ()=> {
         cy.fixture("credentials/failLogin").then((user) =>{
             cy.get('#signIn-email').type(user.email)
             cy.get('#signIn-password').type(user.password)
