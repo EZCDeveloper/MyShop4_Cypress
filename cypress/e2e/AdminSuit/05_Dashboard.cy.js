@@ -40,6 +40,8 @@ describe("Products", () => {
                 cy.wait(1000)
                 cy.writeFile(filePath, body)
             })
+        
+        cy.get('#modal-cancel-button').click()
     })
 
 })

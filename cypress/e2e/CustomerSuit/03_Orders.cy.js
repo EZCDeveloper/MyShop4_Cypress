@@ -18,7 +18,6 @@ describe("Orders", () => {
             //this.data = data;
             globalThis.singProd = singProd;
         })
-
     })
 
     it("TC_O001 - Add to Cart", () => {
