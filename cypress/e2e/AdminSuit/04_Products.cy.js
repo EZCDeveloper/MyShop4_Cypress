@@ -29,8 +29,10 @@ describe("Products", () => {
             cy.get('#addProduct-price').type(prod.productPrice)
             cy.get('#addProduct-stock').type(prod.productStock)
         })
-         cy.get('#addProduct-images').attachFile('images/lenovohero2.png')
-         cy.get('#addProduct-primary-button').click({force: true})
+        
+        cy.get('#addProduct-images', { timeout: 10000}).attachFile('images/hpnueva.png')
+        cy.get('#modal-close-button').click()
+        cy.get('#addProduct-primary-button').click({force: true})
 
         // Add a Product (thro Category Page)
         /*  cy.get('div:nth-of-type(4) > .card.categories-card.is-horizontal  .card-extra-actions > button:nth-of-type(2)').click()
@@ -60,7 +62,8 @@ describe("Products", () => {
             cy.get('#addProduct-presentation-price1').type(prod.secondProductPrice)
             cy.get('#addProduct-stock-1').type(prod.secondProductStock)      
         })
-        cy.get('.select').attachFile('images/smartPhone.jpeg')
+        cy.get('.select').attachFile('images/hpsuper.png')
+        cy.get('#modal-close-button').click()
         cy.get('#addProduct-primary-button').click({force: true})
 
         // Add a Product with Discount
@@ -78,7 +81,8 @@ describe("Products", () => {
             cy.get('#addProduct-price').type(prod.productPrice)
             cy.get('#addProduct-stock').type(prod.productStock)
         })
-        cy.get('#addProduct-images').attachFile('images/smartPhone.jpeg')
+        cy.get('#addProduct-images').attachFile('images/hpoferta.png')
+        cy.get('#modal-close-button').click()
         cy.get('#addProduct-primary-button').click({force: true})
     });
     

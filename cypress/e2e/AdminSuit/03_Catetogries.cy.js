@@ -8,7 +8,7 @@ describe("Categories", () => {
              cy.get('#signIn-email').type(user.email)
              cy.get('#signIn-password').type(user.password)
         })  
-        cy.get('#signIn-primary-button').click()
+        cy.get('#signIn-primary-button', { timeout: 10000 }).click()
         cy.fixture("linksButtons/buttons").then((buttons)=>{
             cy.get(buttons.goCategories).click({force: true})
         })
